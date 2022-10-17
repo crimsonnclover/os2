@@ -320,20 +320,30 @@ userdel -r user1
 usermod -c "User FTP" -g system -d /ftp/user1 -s /bin/nologin user1
 изменить атрибуты пользователя
 
+![image](https://user-images.githubusercontent.com/99398496/196252880-95f3df0e-f3df-4246-bf47-755e0fa28eeb.png)
+
 passwd
 сменить пароль
+
+![image](https://user-images.githubusercontent.com/99398496/196253140-257c2e36-046a-449d-a46b-664d63eb879d.png)
 
 passwd user1
 сменить пароль пользователя user1 (только root)
 
+![image](https://user-images.githubusercontent.com/99398496/196253332-8ee60ef1-2efe-4d4e-a00c-7349b983d68e.png)
+
 chage -E 2005-12-31 user1
 установить дату окончания действия учётной записи пользователя user1
+
+![image](https://user-images.githubusercontent.com/99398496/196253586-ec12b709-251f-43c0-8184-bd087185d7f3.png)
 
 pwck
 проверить корректность системных файлов учётных записей. Проверяются файлы /etc/passwd и /etc/shadow
 
 grpck
 проверяет корректность системных файлов учётных записей. Проверяется файл/etc/group
+
+![image](https://user-images.githubusercontent.com/99398496/196253822-b5aacf4f-767c-454a-8d0d-ec3301bcfc04.png)
 
 newgrp [-] group_name
 изменяет первичную группу текущего пользователя. Если указать "-", ситуация будет идентичной той, в которой пользователь вышил из системы и снова вошёл. Если не указывать группу, первичная группа будет назначена из /etc/passwd
@@ -342,23 +352,37 @@ newgrp [-] group_name
 top
 отобразить запущенные процессы, используемые ими ресурсы и другую полезную информацию (с автоматическим обновлением данных)
 
+![image](https://user-images.githubusercontent.com/99398496/196254077-e9ed4691-cb3c-4fcb-8f09-e52de78f1e51.png)
+
 ps -eafw
 отобразить запущенные процессы, используемые ими ресурсы и другую полезную информацию (единожды)
+
+![image](https://user-images.githubusercontent.com/99398496/196254150-76b9765b-6541-42a7-afe3-e329e0989d48.png)
 
 ps -e -o pid,args --forest
 вывести PID'ы и процессы в виде дерева
 
+![image](https://user-images.githubusercontent.com/99398496/196254233-e147fd8a-2ff1-4cc4-bae1-7999e34fcaa2.png)
+
 pstree
 отобразить дерево процессов
+
+![image](https://user-images.githubusercontent.com/99398496/196254266-04efa90d-7825-4777-8d4e-b26971b0404e.png)
 
 kill -9 98989, kill -KILL 98989
 "убить" процесс с PID 98989 "на смерть" (без соблюдения целостности данных)
 
+![image](https://user-images.githubusercontent.com/99398496/196258849-18d8c395-ded2-47b7-85c5-7862a95e96f3.png)
+
 kill -TERM 98989
 Корректно завершить процесс с PID 98989
 
+![image](https://user-images.githubusercontent.com/99398496/196258877-223733f9-0e29-47b3-88aa-627fe5ef797c.png)
+
 kill -1 98989, kill -HUP 98989
 заставить процесс с PID 98989 перепрочитать файл конфигурации
+
+![image](https://user-images.githubusercontent.com/99398496/196258935-4085a46c-8c67-4e64-b899-21024a77397c.png)
 
 lsof -p 98989
 отобразить список файлов, открытых процессом с PID 98989
@@ -369,66 +393,110 @@ lsof /home/user1
 lsof -iTCP:59302
 показать приложение, которое использует TCP-порт 59302 (не обязательно слушает)
 
+![image](https://user-images.githubusercontent.com/99398496/196258993-853cd4f7-e101-46e2-855f-d821101bd8ea.png)
+
 strace -c ls > /dev/null
 вывести список системных вызовов, созданных и полученных процессом ls
+
+![image](https://user-images.githubusercontent.com/99398496/196258094-c09da4f6-a8d3-476c-b69f-eb2fca9b50d5.png)
 
 strace -f -e open ls > /dev/null
 вывести вызовы бибилотек
 
+![image](https://user-images.githubusercontent.com/99398496/196258175-36346c26-88a1-4114-b3a5-48f95107babe.png)
+
 watch -n1 'cat /proc/interrupts'
 отображать прерывания в режиме реального времени
+
+![image](https://user-images.githubusercontent.com/99398496/196258298-af7fa5e3-7d90-44bc-80e5-19b096a03d2a.png)
 
 last reboot
 отобразить историю перезагрузок системы
 
+![image](https://user-images.githubusercontent.com/99398496/196258465-50f91145-c6cb-41f2-9f68-d2b4f300ba95.png)
+
 last user1
 отобразить историю регистрации пользователя user1 в системе и время его нахождения в ней
+
+![image](https://user-images.githubusercontent.com/99398496/196258522-2370c41f-69e6-4a52-be4b-4474a262ea32.png)
 
 lsmod
 вывести загруженные модули ядра
 
+![image](https://user-images.githubusercontent.com/99398496/196258582-5f4462f2-19cb-411f-9296-61801c21497f.png)
+
 free -m
 показать состояние оперативной памяти в мегабайтах
+
+![image](https://user-images.githubusercontent.com/99398496/196258618-698f5f2a-3a27-4c8b-807a-0a2ef0fbbf60.png)
 
 smartctl -A /dev/hda
 контроль состояния жёсткого диска /dev/hda через SMART
 
+![image](https://user-images.githubusercontent.com/99398496/196259267-0afc5422-dad7-4c48-86ab-b5de4f0a4c6b.png)
+
 smartctl -i /dev/hda
 проверить доступность SMART на жёстком диске /dev/hda
+
+![image](https://user-images.githubusercontent.com/99398496/196259361-74f64536-3d84-479a-9fd9-46daeb76712d.png)
 
 tail /var/log/dmesg
 вывести десять последних записей из журнала загрузки ядра
 
+![image](https://user-images.githubusercontent.com/99398496/196259831-6eb46475-9cae-4898-82d4-29e5e2eee188.png)
+
 tail /var/log/messages
 вывести десять последних записей из системного журнала
+
+![image](https://user-images.githubusercontent.com/99398496/196259891-5cb48878-71fe-49b8-8136-de4df4cf4f01.png)
 
 <a name="7"><h2>Дополнительные команды</h2></a>
 apropos …keyword
 выводит список комманд, которые так или иначе относятся к ключевым словам. Полезно, когда вы знаете что делает программа, но не помните команду
 
+![image](https://user-images.githubusercontent.com/99398496/196260013-b9364446-6016-426c-8111-aaf75061008c.png)
+
 man ping
 вызов руководства по работе с программой, в данном случае, - ping
+
+![image](https://user-images.githubusercontent.com/99398496/196260109-95bd458b-a7dc-4f39-be88-5df0d257f9da.png)
 
 whatis …keyword
 отображает описание действий указанной программы
 
+![image](https://user-images.githubusercontent.com/99398496/196260207-453b4766-977c-46bf-a458-1288c2664995.png)
+
 gpg -c file1
 шифрует файл file1 с помощью GNU Privacy Guard
+
+![image](https://user-images.githubusercontent.com/99398496/196260268-01e6ceb7-7f1f-4d31-9628-f44b9817e628.png)
 
 gpg file1.gpg
 дешифрует файл file1 с помощью GNU Privacy Guard
 
+![image](https://user-images.githubusercontent.com/99398496/196260524-6bed3a96-cfcd-4dc9-a15d-3dc54d0b51f5.png)
+
 wget -r www.example.com
 загружает рекурсивно содержимое сайта www.example.com
+
+![image](https://user-images.githubusercontent.com/99398496/196260821-46a5b8c3-a304-4f5c-9c71-3da570a3c5e6.png)
 
 wget -c www.example.com/file.iso
 загрузить файл www.example.com/file.iso с возможностью останова и продолжения в последствии
 
+![image](https://user-images.githubusercontent.com/99398496/196260994-a8d9b3f6-5ac3-4399-a1c2-d00c1694ed82.png)
+
 echo 'wget -c www.example.com/files.iso' | at 09:00
 начать закачку в указанное время
+
+![image](https://user-images.githubusercontent.com/99398496/196261090-9cd138b0-2ac5-4cbb-a2cc-ac528dce0453.png)
 
 ldd /usr/bin/ssh
 вывести список библиотек, необходимых для работы ssh
 
+![image](https://user-images.githubusercontent.com/99398496/196261137-9423d6ce-dc3c-4aba-b584-e3c9cf9717a6.png)
+
 alias hh='history'
 назначить алиас hh команде history
+
+![image](https://user-images.githubusercontent.com/99398496/196261194-592d3548-371a-4e42-bf37-0f6488f7a6c7.png)
